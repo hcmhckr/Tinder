@@ -3,118 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
   <title>Message Box</title>
   <!-- Include Google Roboto font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Parent container to hold the message box and the icon container */
-  .message-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    display: flex
-;
-    align-items: center;
-    margin: 0px 10px 10px 10px;
-}
-
-
-    /* The message box that takes 80% of the width */
-.message-box {
-    width: 100%;
-    border: 2px solid #9e9e9e;
-    border-radius: 75px;
-    padding: 5px;
-    background-color: #ffffff;
-    display: flex
-;
-    align-items: center;
-}
-
-    /* The icon container that takes the remaining 20% of the page width */
-.icon-container {
-    width: 20%;
-    display: flex
-;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 0px 0px 10px;
-}
-
-img {
-    width: 50px;
-}
-
-
-    .message-box textarea {
-    resize: none;
-    flex: 1;
-}
-
-   .message-input {
-    color: #4c4c4c;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-family: 'Roboto', sans-serif;
-    padding: 0px 0px 0px 15px;
-    overflow: hidden;
-    width: 90%;
-    align-content: center;
-       /*   font-size: 12px; */
-
-}
-
-    .message-input::placeholder {
-      color: #afafaf; /* Placeholder text color */
+    .message-container {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 0px 10px 10px 10px;
     }
 
- /* The "ENVOYER" button fixed in its position */
-.send-button {
-    color: #0279f8;
-    background-color: #f0f0f0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    margin: 0px 10px;
-    position: relative;
-       /*   font-size: 12px; */
+    .message-box {
+      width: 100%;
+      border: 2px solid #9e9e9e;
+      border-radius: 75px;
+      padding: 5px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+    }
 
+    .icon-container {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5px 0px 20px;
 }
 
-.send-button:disabled {
-  color: #6a6a6a;
-  cursor: not-allowed;
+    img {
+      width: 50px;
+    }
+
+    .message-box textarea {
+      resize: none;
+      flex: 1;
+    }
+
+    .message-input {
+      color: #4c4c4c;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-family: 'Roboto', sans-serif;
+      padding: 0px 0px 0px 15px;
+      overflow: hidden;
+      width: 90%;
+    }
+
+    .message-input::placeholder {
+      color: #afafaf;
+    }
+
+    .send-button {
+      color: #0279f8;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      margin: 0px 10px;
+    }
+
+    .send-button:disabled {
+      color: #6a6a6a;
+      cursor: not-allowed;
+    }
+    .send-button:disabled {
+    color: #6a6a6a;
+    cursor: not-allowed;
+    background-color: #0088ff00 !important;
 }
+
+    /* Disable hover effect if button is clicked */
+    .send-button.no-hover:hover {
+      color: inherit;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
   <div class="message-container">
-    <!-- Icon container (takes 20% of the page width) -->
     <div class="icon-container">
-      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh0WJ9o1UBWt7rH72RpoHzAw_lrHfvSUa5puIwJJbKiZkCUNF7vMUCDDtrTHLhFTtRGaaKUlJo9FP_kMPpS6rje_1J1a-4Wbh6yxRLiAmMPXyZf6zbs_vWV2BnbO4Ka75fNwIJ4ZeYl83Jah7Azo9r0-udyT0UUe-dUgSoAAbnSz8R3mdQ1lf6uLA_GwRs" alt="icon"> <!-- Replace with your icon URL -->
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh0WJ9o1UBWt7rH72RpoHzAw_lrHfvSUa5puIwJJbKiZkCUNF7vMUCDDtrTHLhFTtRGaaKUlJo9FP_kMPpS6rje_1J1a-4Wbh6yxRLiAmMPXyZf6zbs_vWV2BnbO4Ka75fNwIJ4ZeYl83Jah7Azo9r0-udyT0UUe-dUgSoAAbnSz8R3mdQ1lf6uLA_GwRs" alt="icon">
     </div>
-    
-    <!-- Message box (takes 80% of the page width) -->
     <div class="message-box">
       <textarea id="message-input" class="message-input" placeholder="Rédiger un message..."></textarea>
       <button id="send-button" class="send-button" disabled>ENVOYER</button>
     </div>
   </div>
-
   <script>
     const messageInput = document.getElementById("message-input");
     const sendButton = document.getElementById("send-button");
 
-    // Function to send the message (replace with your actual implementation)
+    // Function to send the message
     function sendMessage(message) {
       console.log("Sending message:", message);
-      // Implement your actual sending logic here
     }
 
     sendButton.addEventListener("click", () => {
@@ -123,14 +110,17 @@ img {
         sendMessage(message);
         messageInput.value = ""; // Clear the input field
         adjustTextareaHeight(); // Adjust textarea height after clearing
-        sendButton.blur(); // Remove focus from the button
-        messageInput.focus(); // Keep the textarea focused after sending
+        sendButton.disabled = true; // Disable the send button
+        sendButton.classList.add("no-hover"); // Prevent hover effect
+        messageInput.blur(); // Remove focus from the textarea
       }
     });
 
-    // Disable the send button if the input is empty
+    // Enable the send button only if the input is not empty
     messageInput.addEventListener("input", () => {
-      sendButton.disabled = messageInput.value.trim() === "";
+      if (!sendButton.disabled) {
+        sendButton.disabled = messageInput.value.trim() === "";
+      }
     });
 
     // Auto-focus the input field on page load
@@ -138,15 +128,14 @@ img {
       messageInput.focus();
     };
 
-    // Adjust the height of the textarea dynamically based on content
+    // Adjust the height of the textarea dynamically
     function adjustTextareaHeight() {
-      messageInput.style.height = 'auto';
-      messageInput.style.height = (messageInput.scrollHeight) + 'px';
+      messageInput.style.height = "auto";
+      messageInput.style.height = messageInput.scrollHeight + "px";
     }
 
-    // Call the function initially and on input changes
-    adjustTextareaHeight();
-    messageInput.addEventListener('input', adjustTextareaHeight);
+    // Adjust the height on input
+    messageInput.addEventListener("input", adjustTextareaHeight);
   </script>
 </body>
 </html>
