@@ -110,8 +110,8 @@
       if (message) {
         sendMessage(message);
         messageInput.value = ""; // Clear the input field
+        sendButton.disabled = true; // Disable the button after clearing
         adjustTextareaHeight(); // Adjust textarea height after clearing
-        sendButton.blur(); // Remove focus from the button
         messageInput.focus(); // Keep the textarea focused after sending
       }
     });
